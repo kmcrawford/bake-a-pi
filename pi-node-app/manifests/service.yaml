@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rpi-node-sample
+  namespace: test
+spec:
+  selector:
+    app: rpi-node-sample
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      name: http

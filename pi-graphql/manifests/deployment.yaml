@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pi-graphql
+  namespace: bake-a-pi
+  labels:
+    app: pi-graphql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pi-graphql
+  template:
+    metadata:
+      labels:
+        app: pi-graphql
+    spec:
+      containers:
+      - name: pi-graphql
+        image: blueguse/pi-graphql:0.0.14
+        ports:
+        - containerPort: 4000
+        livenessProbe:
+          httpGet:
+            path: /.well-known/apollo/server-health
+            port: 4000
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /.well-known/apollo/server-health
+            port: 4000
+          initialDelaySeconds: 5
+          periodSeconds: 3

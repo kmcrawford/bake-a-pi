@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pi-graphql
+  namespace: bake-a-pi
+spec:
+  selector:
+    app: pi-graphql
+  ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000
+      name: http

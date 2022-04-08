@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: graphql
+  namespace: bake-a-pi
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+spec:
+  tls:
+  - hosts:
+    - bake-a-pi.spunkyrocket.com
+    secretName: bake-a-pi-spunkyrocket-tls
+  rules:
+  - host: bake-a-pi.spunkyrocket.com
+    http:
+      paths:
+      - path: /graphql
+        pathType: Prefix
+        backend:
+          service:
+            name: pi-graphql
+            port:
+              number: 4000
