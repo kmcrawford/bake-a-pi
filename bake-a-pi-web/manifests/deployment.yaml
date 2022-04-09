@@ -20,6 +20,13 @@ spec:
         image: blueguse/pi-web:0.0.4
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            memory: "10Mi"
+            cpu: "50m"
+          limits:
+            memory: "25Mi"
+            cpu: "100m"
         livenessProbe:
           httpGet:
             path: /

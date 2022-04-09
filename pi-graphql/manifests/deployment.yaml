@@ -20,6 +20,13 @@ spec:
         image: blueguse/pi-graphql:0.0.14
         ports:
         - containerPort: 4000
+        resources:
+          requests:
+            memory: "10Mi"
+            cpu: "200m"
+          limits:
+            memory: "25Mi"
+            cpu: "500m"
         livenessProbe:
           httpGet:
             path: /.well-known/apollo/server-health
