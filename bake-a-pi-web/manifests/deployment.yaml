@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: pi-graphql
-        image: blueguse/pi-web:0.0.4
+        image: blueguse/pi-web:0.0.5
         ports:
         - containerPort: 80
         resources:
