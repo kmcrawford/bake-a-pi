@@ -32,6 +32,9 @@ sudo nano /etc/dhcpcd.conf
 
 ## Install K3s Server
 
+K3s Docs
+https://github.com/k3s-io/k3s
+
 K3s - quick start guide:
 
 https://rancher.com/docs/k3s/latest/en/quick-start/
